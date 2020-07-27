@@ -1,0 +1,178 @@
+var mytext = ['CARDS', 'PAYMENTS', 'LOAN', 'SUPPORT', 'REWARDS', 'SAVINGS', 'INVESTMENT', 'FOREX', 'ANALYTICS'];
+var curr = 0;
+var i = 0;
+var j=1;
+var reward=document.getElementById("reward");
+
+function blinked()
+{
+    if(j==5)
+    {
+        reward.setAttribute("class","blink");
+        reward2.setAttribute("class","blink");
+        reward3.setAttribute("class","blink");
+    }
+    else
+    {
+        reward.setAttribute("class","unblink");
+        reward2.setAttribute("class","unblink");
+        reward3.setAttribute("class","unblink");
+    }
+    if(j==6)
+    {
+        saving.setAttribute("class","blink");
+        saving2.setAttribute("class","blink");
+        saving3.setAttribute("class","blink");
+    }
+    else
+    {
+        saving.setAttribute("class","unblink");
+        saving2.setAttribute("class","unblink");
+        saving3.setAttribute("class","unblink");
+    }
+    if(j==7)
+    {
+        investment.setAttribute("class","blink");
+        investment2.setAttribute("class","blink");
+        investment3.setAttribute("class","blink");
+    }
+    else
+    {
+        investment.setAttribute("class","unblink");
+        investment2.setAttribute("class","unblink");
+        investment3.setAttribute("class","unblink");
+    }
+    if(j==8)
+    {
+        forex.setAttribute("class","blink");
+        forex2.setAttribute("class","blink");
+        forex3.setAttribute("class","blink");
+
+    }
+    else
+    {
+        forex.setAttribute("class","unblink");
+        forex2.setAttribute("class","unblink");
+        forex3.setAttribute("class","unblink");
+    }
+    if(j==9)
+    {
+        analytics.setAttribute("class","blink");
+        analytics2.setAttribute("class","blink");
+        analytics3.setAttribute("class","blink");
+    }
+    else
+    {
+        analytics.setAttribute("class","unblink");
+        analytics2.setAttribute("class","unblink");
+        analytics3.setAttribute("class","unblink");
+    }
+    if(j==1)
+    {
+        cards.setAttribute("class","blink");
+        cards2.setAttribute("class","blink");
+        cards3.setAttribute("class","blink");
+    }
+    else
+    {
+        cards.setAttribute("class","unblink");
+        cards2.setAttribute("class","unblink");
+        cards3.setAttribute("class","unblink");
+    }
+    if(j==2)
+    {
+        payment.setAttribute("class","blink");
+        payment2.setAttribute("class","blink");
+        payment3.setAttribute("class","blink");
+    }
+    else
+    {
+        payment.setAttribute("class","unblink");
+        payment2.setAttribute("class","unblink");
+        payment3.setAttribute("class","unblink");
+    }
+    if(j==3)
+    {
+        loans.setAttribute("class","blink");
+        loans2.setAttribute("class","blink");
+        loans3.setAttribute("class","blink");
+    }
+    else
+    {
+        loans.setAttribute("class","unblink");
+        loans2.setAttribute("class","unblink");
+        loans3.setAttribute("class","unblink");
+    }
+    if(j==4)
+    {
+        support.setAttribute("class","blink");
+        support2.setAttribute("class","blink");
+        support3.setAttribute("class","blink");
+    }
+    else
+    {
+        support.setAttribute("class","unblink");
+        support2.setAttribute("class","unblink");
+        support3.setAttribute("class","unblink");
+    }
+    if(j<9)
+    {
+        j++;
+    }
+    else
+    {
+        j=1;
+    }
+}
+//setInterval(blinked,2000);
+var totalTime=0;
+function write_letter()
+{
+    var txt = mytext[curr];
+    var t=100;
+    //alert(txt);
+    if(i==0)
+    {
+        blinked();
+    }
+    if(i<txt.length)
+    {
+        totalTime+=t;
+        document.getElementById("type_text").innerHTML+=txt.charAt(i);
+        i++;
+        setTimeout(write_letter,t);
+    }
+    else
+    {
+        if(1000-totalTime<0)
+        {
+            totalTime=2;
+        }
+        //i=0;
+        //curr++;
+        //document.getElementById("type_text").innerHTML+=" ";
+        this.setTimeout(this.write_letter_del,1000-totalTime);
+    }
+}
+setTimeout(write_letter,2000);
+function write_letter_del()
+{
+    var txt = mytext[curr];
+    //alert(txt);
+    if(i>=0)
+    {
+        document.getElementById("type_text").innerHTML=txt.substring(0,i);
+        i--;
+        setTimeout(write_letter_del,100);
+    }
+    else
+    {
+        curr++;
+        totalTime=0;
+        //document.getElementById("type_text").innerHTML+=" ";
+        setTimeout(this.write_letter,2);
+        if(curr==mytext.length){
+            curr=0;
+        }
+    }
+}
