@@ -2,8 +2,7 @@ var mytext = ['CARDS', 'PAYMENTS', 'LOAN', 'SUPPORT', 'REWARDS', 'SAVINGS', 'INV
 var id1 = ['cards', 'payment', 'loans', 'support', 'reward', 'saving', 'investment', 'forex', 'analytics'];
 var id2 = ['cards2', 'payment2', 'loans2', 'support2', 'reward2', 'saving2', 'investment2', 'forex2', 'analytics2'];
 var id3 =['cards3', 'payment3', 'loans3', 'support3', 'reward3', 'saving3', 'investment3', 'forex3', 'analytics3'];
-var curr=0,i=0;
-function write_letter()
+function write_letter(curr,i)
 {
     var txt = mytext[curr];
     var icon=document.getElementById(id1[curr]);
@@ -33,30 +32,28 @@ function write_letter()
     {
         document.getElementById("type_text").innerHTML+=txt.charAt(i);
         i++;
-        setTimeout(write_letter,200);
+        setTimeout(write_letter,200,curr,i);
     }
     else
     {
         
-        this.setTimeout(this.write_letter_del,200);
+        this.setTimeout(this.write_letter_del,200,curr,i);
     }
 }
-setTimeout(write_letter,1000);
-function write_letter_del()
+setTimeout(write_letter,1000,0,0);
+function write_letter_del(curr,i)
 {
     var txt = mytext[curr];
-    //alert(txt);
     if(i>=0)
     {
         document.getElementById("type_text").innerHTML=txt.substring(0,i);
         i--;
-        setTimeout(write_letter_del,100);
+        setTimeout(write_letter_del,100,curr,i);
     }
     else
     {
         curr++;
-        //document.getElementById("type_text").innerHTML+=" ";
-        setTimeout(this.write_letter,2);
+        setTimeout(this.write_letter,2,curr,i);
         if(curr==mytext.length){
             curr=0;
         }
